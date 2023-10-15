@@ -25,7 +25,7 @@ router.delete(
 
 router.put(
   "/update-blog/:blogId",
-  blogController.updateblog
+  blogController.updateBlog
 )
 
 module.exports = router;

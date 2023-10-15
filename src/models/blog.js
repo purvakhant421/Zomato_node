@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+
+//Creating schema for blog
 const blogSchema = new mongoose.Schema(
     {
         blog_title : {

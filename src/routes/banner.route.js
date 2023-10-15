@@ -10,8 +10,8 @@ const router = express.Router();
 /** Create banner */
 router.post(
   "/create",
-  auth(),
-  upload.single("sports_image"),
+  //auth(),
+  upload.single("banner_image"),
   validate(bannerValidation.createBanner),
   bannerController.createBanner
 );

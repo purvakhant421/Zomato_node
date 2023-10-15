@@ -1,44 +1,55 @@
 const mongoose = require("mongoose");
-const config = require("../config/config");
-
 const restaurantSchema = mongoose.Schema(
   {
-    restaurant_name: {
-      type: String,
-      trim: true,
-    },
-    restaurant_address: {
-      type: String,
-      trim: true,
-    },
-    restaurant_number: {
-        type: Number,
-        default : 0,
-      },
-    restaurant_address: {
-        type: String,
-        trim: true,
-      },
-    restaurant_image: {
-      type: String,
-      trim: true,
-    },
-    is_active: {
-      type: Boolean,
-      default: false,
-    },
+    restaurant_name:{
+      type:String,
+      trim:true
   },
-  {
-    timestamps: true,
-    versionKey: false,
-    toJSON: {
-      transform: function (doc, data) {
-        if (data?.restaurant_image) {
-          data.restaurant_image = `${config.base_url}restaurant_images/${data.restaurant_image}`;
-        }
-      },
-    },
+  restaurant_address:{
+      type:String,
+      trim:true
+  },
+  restaurant_contact_no:{
+      type:String,
+      trim:true
+  },
+  owner_detail:{
+      type:String,
+      trim:true
+  },
+  owner_contact_no:{
+      type:String,
+      trim:true
+  },
+  whatsapp_notification:{
+      type:Boolean,
+      default:true
+  },
+  restaurant_image:{
+      type:String,
+      trim:true
+  },
+  food_image:{
+      type:String,
+      trim:true
+  },
+  restaurant_type:{
+      type:mongoose.Types.ObjectId,
+      ref:"Restaurant_type"
+  },
+  city:{
+      type:mongoose.Types.ObjectId,
+      ref:"City"
+  },
+  restaurant_status:{
+      type:Boolean,
+      default:true
   }
+},
+{
+  timestamps:true,
+  versionKey:false
+}
 );
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);

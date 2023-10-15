@@ -1,17 +1,16 @@
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
-const { log } = require("console");
 
 /** Image upload using disk storage */
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    if (file.fieldname == "sports_image") {
+    if (file.fieldname == "banner_image") {
       console.log(__dirname,'__dirname');
-      fs.mkdirSync(path.join(__dirname, "../public/sports_image"), {
+      fs.mkdirSync(path.join(__dirname, "../public/banner_image"), {
         recursive: true,
       });
-      cb(null, path.join(__dirname, "../public/sports_image"));
+      cb(null, path.join(__dirname, "../public/banner_image"));
     }
   },
   filename: function (req, file, cb) {
